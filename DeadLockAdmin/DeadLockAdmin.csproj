@@ -1,0 +1,144 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>DeadLockAdmin</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Display name -->
+		<ApplicationTitle>DeadLockAdmin</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.deadlockadmin</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\abrams.png" />
+	  <None Remove="Resources\Images\achievement.png" />
+	  <None Remove="Resources\Images\bebop.png" />
+	  <None Remove="Resources\Images\dynamo.png" />
+	  <None Remove="Resources\Images\greytalon.png" />
+	  <None Remove="Resources\Images\haze.png" />
+	  <None Remove="Resources\Images\health_icon.png" />
+	  <None Remove="Resources\Images\heroes.png" />
+	  <None Remove="Resources\Images\home_icon.png" />
+	  <None Remove="Resources\Images\inf.png" />
+	  <None Remove="Resources\Images\items.png" />
+	  <None Remove="Resources\Images\ivy.png" />
+	  <None Remove="Resources\Images\kelvin.png" />
+	  <None Remove="Resources\Images\ladygeist.png" />
+	  <None Remove="Resources\Images\lash.png" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\mcginnis.png" />
+	  <None Remove="Resources\Images\mirage.png" />
+	  <None Remove="Resources\Images\mokrill.png" />
+	  <None Remove="Resources\Images\paradox.png" />
+	  <None Remove="Resources\Images\pocket.png" />
+	  <None Remove="Resources\Images\seven.png" />
+	  <None Remove="Resources\Images\shiv.png" />
+	  <None Remove="Resources\Images\souls.png" />
+	  <None Remove="Resources\Images\spirit1.png" />
+	  <None Remove="Resources\Images\spirit2.png" />
+	  <None Remove="Resources\Images\spirit3.png" />
+	  <None Remove="Resources\Images\spirit4.png" />
+	  <None Remove="Resources\Images\spirit5.png" />
+	  <None Remove="Resources\Images\spirit6.png" />
+	  <None Remove="Resources\Images\spirit7.png" />
+	  <None Remove="Resources\Images\tactics.png" />
+	  <None Remove="Resources\Images\vindicta.png" />
+	  <None Remove="Resources\Images\viscous.png" />
+	  <None Remove="Resources\Images\vitality1.png" />
+	  <None Remove="Resources\Images\vitality10.png" />
+	  <None Remove="Resources\Images\vitality2.png" />
+	  <None Remove="Resources\Images\vitality3.png" />
+	  <None Remove="Resources\Images\vitality4.png" />
+	  <None Remove="Resources\Images\vitality5.png" />
+	  <None Remove="Resources\Images\vitality6.png" />
+	  <None Remove="Resources\Images\vitality7.png" />
+	  <None Remove="Resources\Images\vitality8.png" />
+	  <None Remove="Resources\Images\warden.png" />
+	  <None Remove="Resources\Images\weapon1.png" />
+	  <None Remove="Resources\Images\weapon2.png" />
+	  <None Remove="Resources\Images\weapon3.png" />
+	  <None Remove="Resources\Images\weapon4.png" />
+	  <None Remove="Resources\Images\weapon5.png" />
+	  <None Remove="Resources\Images\weapon6.png" />
+	  <None Remove="Resources\Images\weapon7.png" />
+	  <None Remove="Resources\Images\weapon8.png" />
+	  <None Remove="Resources\Images\weapon9.png" />
+	  <None Remove="Resources\Images\workout.png" />
+	  <None Remove="Resources\Images\wraith.png" />
+	  <None Remove="Resources\Images\yamat.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="BuildsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="CreateCharacterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Heroes.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Items.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\DeadLockStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+</Project>

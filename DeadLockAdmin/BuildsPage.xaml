@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DeadLockAdmin.ViewModels"
+             x:Class="DeadLockAdmin.BuildsPage"
+             BackgroundColor="#2b2923">
+
+    <ContentPage.BindingContext>
+        <vm:BuildsViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="10">
+        <!-- Заголовок -->
+        <Label x:Name="PagTitle"
+               Style="{StaticResource HeaderStyle}"
+               HorizontalOptions="Center" />
+
+        <!-- Список билдов -->
+        <CollectionView ItemsSource="{Binding Builds}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedBuild}"
+                Margin="0,10,0,0">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" BorderColor="#ada58c" Background="#3d403a">
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Name}"
+                           FontSize="18"
+                           TextColor="#efdfc0"
+                           VerticalOptions="Center" />
+                            <Label Text="{Binding Author, StringFormat='Автор: {0}'}"
+                           FontSize="14"
+                           TextColor="#ada58c"
+                           VerticalOptions="Center"
+                           Margin="10,0,0,0" />
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Кнопка для создания нового билда -->
+        <Button x:Name="CreateBuildButton"
+        Text="Создать новый билд"
+        Command="{Binding CreateBuildCommand}"
+        BackgroundColor="#453f34"
+        TextColor="#efdfc0"
+        CornerRadius="5"
+        Margin="0,20,0,0"/>
+
+    </VerticalStackLayout>
+</ContentPage>

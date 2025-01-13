@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DeadLockAdmin.Heroes" 
+             BackgroundColor="#2b2923">
+    <ScrollView HorizontalScrollBarVisibility="Never">
+        <StackLayout Padding="10">
+            <Label Text="Герои Deadlock" 
+                   Style="{StaticResource HeaderStyle}" 
+                   HorizontalOptions="Center" />
+            <Button Text="Создать персонажа"
+                BackgroundColor="#3b3a36"
+                TextColor="White"
+                CornerRadius="5"
+                Clicked="OnCreateCharacterClicked"
+                Margin="0,10,0,10"
+                HorizontalOptions="Center" />
+            <CollectionView x:Name="charactersCollectionView"
+                ItemsSource="{Binding Characters}"
+                SelectionChanged="OnCharacterSelected"
+                SelectionMode="Single"
+                WidthRequest="394" 
+                HorizontalOptions="Center" 
+                Margin="8,0,0,0">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="5">
+                            <Image Source="{Binding Image}" 
+                       Style="{StaticResource Img}" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

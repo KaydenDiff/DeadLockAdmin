@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="DeadLockAdmin.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DeadLockAdmin"
+        TabBarBackgroundColor="#453f34"
+    TabBarUnselectedColor="#ada58c"
+    TabBarDisabledColor="#ada58c"
+    TabBarTitleColor="#efdfc0">
+
+
+    <TabBar>
+        <Tab Title="Главная" Icon="home_icon.png">
+            <!-- Добавьте Route для MainPage -->
+            <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+
+        <Tab Title="Герои" Icon="heroes.png">
+            <!-- Добавьте Route для HeroesPage -->
+            <ShellContent Route="HeroesPage" ContentTemplate="{DataTemplate local:Heroes}" />
+        </Tab>
+
+        <Tab Title="Предметы" Icon="items.png">
+            <!-- Добавьте Route для ItemsPage -->
+            <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:Items}" />
+        </Tab>
+
+        <Tab Title="Логин" Icon="items.png">
+            <!-- Добавьте Route для LoginPage -->
+            <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>
